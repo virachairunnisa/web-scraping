@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.worldometers.info/coronavirus/country/indonesia/"
+r = requests.get(url)
+
+soup = BeautifulSoup(r.content, features="html.parser")
+
+#mengambil data dari kasus covid-19
+data = soup.findAll(id="maincounter-wrap")
+for x in data:
+    print(x.text)
